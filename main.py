@@ -7,6 +7,7 @@ import subprocess
 FILE_NAME = tkinter.NONE
 
 def run():
+    global res, res_2	
     save_as()
     command_1 = "cd C:\\Users\\Home\\PycharmProjects\\pythonProject1"
     command_2 = "python C:\\Users\Home\\PycharmProjects\\pythonProject1\\"
