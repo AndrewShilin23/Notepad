@@ -7,16 +7,23 @@ import subprocess
 FILE_NAME = tkinter.NONE
 
 def run():
-    global res, res_2	
-    save_as()
+    global res, res_2
+    #save_as()
+    #file = str(input("Введите имя файла:"))
+    file_2 = str((os.path.basename(FILE_NAME)))
     command_1 = "cd C:\\Users\\Home\\PycharmProjects\\pythonProject1"
     command_2 = "python C:\\Users\Home\\PycharmProjects\\pythonProject1\\"
-    file = str(input("Введите название сохраненного файла>>> "))
 
-    new_file = command_2 + file
+    new_f = command_2 + file_2
+
     res = subprocess.call(command_1, shell=True)
-    res_2 = subprocess.call(new_file, shell=True)
+     
+    res_2 = subprocess.call(new_f, shell=True)
+    root.title(file_2+" - Notepad")
+    print(new_f)
 
+	
+	
 def new_file():
 	global FILE_NAME
 	FILE_NAME = "Untitled"
@@ -35,14 +42,17 @@ def save_as():
 	out.write(data.rstrip())
 
 def open_file():
-	global FILE_NAME
-	inp = askopenfile(mode="r")
-	if inp is None:
-		return
-	FILE_NAME = inp.name
-	data = inp.read()
-	text.delete('1.0', tkinter.END)
-	text.insert('1.0', data)
+    global FILE_NAME
+    inp = askopenfile(mode="r")
+    if inp is None:
+        return
+    FILE_NAME = inp.name
+    data = inp.read()
+    text.delete('1.0', tkinter.END)
+    text.insert('1.0', data)
+    a = str((os.path.basename(FILE_NAME)))
+    
+    root.title(a+" - Notepad")
 
 
 root = tkinter.Tk()
